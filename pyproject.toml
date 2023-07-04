@@ -18,6 +18,7 @@ typer = "^0.9.0"
 deprecated = "^1.2.13"
 mashumaro = "^3.7"
 numpy = "^1.24.3"
+gevent = "^22.10.2"
 
 
 [tool.poetry.scripts]
@@ -120,6 +121,7 @@ sphinx-togglebutton = "^0.3.2"
 sphinxcontrib-bibtex = "^2.5.0"
 sphinx-autoapi = "^2.1.0"
 sphinx-autodoc2 = "^0.4.2"
+pytest-benchmark = "^4.0.0"
 
 
 [tool.coverage.paths]

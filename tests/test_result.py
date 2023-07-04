@@ -197,6 +197,40 @@ def time_creat_result(result_dir, port, fas):
     return results
 
 
+def test_bcresult(tmpdir, port, fas, benchmark):
+    benchmark(
+        run_cblat,
+        tmpdir,
+        port,
+        fas,
+    )
+
+    pxblat_results = run_pxblat(tmpdir, port, fas)
+    for fa in fas.glob("*fa"):
+        cc_res = tmpdir / f"{fa.stem}_cc.psl"
+        pp_res = pxblat_results[fa.stem]
+        a, b, _ = _cpsl(cc_res, pp_res, False)
+        assert len(a) == 0
+        assert len(b) == 0
+
+
+def test_bpresult(tmpdir, port, fas, benchmark):
+    pxblat_results = benchmark(
+        run_pxblat,
+        tmpdir,
+        port,
+        fas,
+    )
+
+    run_cblat(tmpdir, port, fas)
+    for fa in fas.glob("*fa"):
+        cc_res = tmpdir / f"{fa.stem}_cc.psl"
+        pp_res = pxblat_results[fa.stem]
+        a, b, _ = _cpsl(cc_res, pp_res, False)
+        assert len(a) == 0
+        assert len(b) == 0
+
+
 def test_result(tmpdir, port, fas, time=False):
     if not time:
         pxblat_results = create_result(tmpdir, port, fas)
