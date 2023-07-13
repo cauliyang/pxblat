@@ -99,7 +99,7 @@ convention = 'google'
 pytest = "^7.3.1"
 pytest-sugar = "^0.9.7"
 black = "^23.3.0"
-ruff = ">=0.0.270,<0.0.278"
+ruff = ">=0.0.270,<0.0.279"
 ipython = "^8.13.1"
 pybind11-stubgen = ">=0.13,<0.17"
 invoke = "^2.1.2"
